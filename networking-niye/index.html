@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Computer Networking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Master Computer Networking</h1>
+        <p>Discover Networking with Interactive Animations</p>
+        <div class="header-animation">
+            <i class="fas fa-globe animate-icon"></i>
+            <i class="fas fa-server animate-icon"></i>
+            <i class="fas fa-wifi animate-icon"></i>
+        </div>
+    </header>
+    <nav>
+        <div class="nav-toggle" onclick="toggleNav()">☰ Menu</div>
+        <ul id="nav-menu">
+            <li><a href="#ip">IP Addressing</a></li>
+            <li><a href="#subnet">Subnetting</a></li>
+            <li><a href="#mac">MAC Address</a></li>
+            <li><a href="#ports">Ports</a></li>
+            <li><a href="#tcpudp">TCP & UDP</a></li>
+            <li><a href="#handshake">TCP Handshake</a></li>
+            <li><a href="#osi">OSI Model</a></li>
+            <li><a href="#tcpip">TCP/IP Model</a></li>
+            <li><a href="#tools">Network Tools</a></li>
+            <li><a href="#security">Network Security</a></li>
+        </ul>
+    </nav>
+
+    <section id="ip">
+        <h2>IP Addressing</h2>
+        <div class="content-box animate-slide">
+            <p>IP addresses are unique identifiers for devices on a network, enabling communication across local and global networks.</p>
+            <div class="info-grid">
+                <div class="info-card animate-card">
+                    <h3>IPv4</h3>
+                    <p>32-bit address (e.g., 192.168.1.1). Limited to ~4.3 billion addresses. Uses dot-decimal notation.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>IPv6</h3>
+                    <p>128-bit address (e.g., 2001:0db8::1). Supports 340 undecillion addresses. Uses hexadecimal.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Classful Addressing</h3>
+                    <p>Class A (1-126.x.x.x), B (128-191.x.x.x), C (192-223.x.x.x), D (multicast), E (reserved).</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Private IPs</h3>
+                    <p>Ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 for private networks.</p>
+                </div>
+            </div>
+            <div class="animation ip-animation"><i class="fas fa-laptop"></i> Your IP: <span id="userIP">Fetching...</span></div>
+        </div>
+    </section>
+
+    <section id="subnet">
+        <h2>Subnetting Calculator</h2>
+        <div class="content-box animate-slide">
+            <p>Subnetting divides networks into smaller subnetworks to optimize IP usage, enhance security, and manage traffic.</p>
+            <div class="subnet-calculator">
+                <input type="text" id="subnetInput" placeholder="Enter IP/CIDR (e.g., 192.168.1.0/24)">
+                <button onclick="calculateSubnet()">Calculate Subnet</button>
+            </div>
+            <div id="subnetResult" class="animate-result"></div>
+            <div class="subnet-info animate-slide">
+                <h3>Why Subnet?</h3>
+                <ul>
+                    <li><i class="fas fa-tachometer-alt"></i> Reduces network congestion</li>
+                    <li><i class="fas fa-shield-alt"></i> Enhances security with isolation</li>
+                    <li><i class="fas fa-cogs"></i> Optimizes IP address allocation</li>
+                    <li><i class="fas fa-sitemap"></i> Simplifies network management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="mac">
+        <h2>MAC Address</h2>
+        <div class="content-box animate-slide">
+            <p>MAC addresses are unique 48-bit identifiers for network interfaces at the Data Link layer.</p>
+            <div class="info-grid">
+                <div class="info-card animate-card">
+                    <h3>Format</h3>
+                    <p>6 bytes in hexadecimal (e.g., 00:1A:2B:3C:4D:5E).</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Purpose</h3>
+                    <p>Used for local network communication, frame delivery in Ethernet.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>OUI</h3>
+                    <p>First 3 bytes assigned by IEEE as Organizationally Unique Identifier.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>MAC Spoofing</h3>
+                    <p>Altering MAC address to bypass restrictions or hide identity.</p>
+                </div>
+            </div>
+            <div class="animation mac-animation"><i class="fas fa-ethernet"></i> Sample MAC: 00:1A:2B:3C:4D:5E</div>
+        </div>
+    </section>
+
+    <section id="ports">
+        <h2>Network Ports</h2>
+        <div class="content-box animate-slide">
+            <p>Ports are virtual endpoints enabling multiple network services on a single device.</p>
+            <div class="port-table animate-table">
+                <table>
+                    <thead>
+                        <tr><th>Port</th><th>Protocol</th><th>Purpose</th><th>Common Use</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>20/21</td><td>FTP</td><td>File Transfer Protocol</td><td>File uploads/downloads</td></tr>
+                        <tr><td>22</td><td>SSH</td><td>Secure Shell</td><td>Secure remote access</td></tr>
+                        <tr><td>23</td><td>Telnet</td><td>Unencrypted remote access</td><td>Legacy remote login</td></tr>
+                        <tr><td>25</td><td>SMTP</td><td>Simple Mail Transfer Protocol</td><td>Email sending</td></tr>
+                        <tr><td>53</td><td>DNS</td><td>Domain Name System</td><td>Domain name resolution</td></tr>
+                        <tr><td>80</td><td>HTTP</td><td>Hypertext Transfer Protocol</td><td>Web browsing</td></tr>
+                        <tr><td>443</td><td>HTTPS</td><td>Secure HTTP</td><td>Secure web browsing</td></tr>
+                        <tr><td>143</td><td>IMAP</td><td>Internet Message Access Protocol</td><td>Email retrieval</td></tr>
+                        <tr><td>3389</td><td>RDP</td><td>Remote Desktop Protocol</td><td>Remote desktop access</td></tr>
+                        <tr><td>5060</td><td>SIP</td><td>Session Initiation Protocol</td><td>VoIP signaling</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="tcpudp">
+        <h2>TCP & UDP</h2>
+        <div class="content-box animate-slide">
+            <p>TCP and UDP are Transport Layer protocols that manage data transfer between devices.</p>
+            <div class="info-grid">
+                <div class="info-card animate-card">
+                    <h3>TCP</h3>
+                    <p>Transmission Control Protocol: Reliable, connection-oriented, ensures data delivery. Used for HTTP, FTP, SMTP.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>UDP</h3>
+                    <p>User Datagram Protocol: Fast, connectionless, no error checking. Used for DNS, VoIP, streaming.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Key Differences</h3>
+                    <p>TCP: Ordered, reliable, slower. UDP: Unordered, unreliable, faster.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Use Cases</h3>
+                    <p>TCP: Web browsing, email. UDP: Video streaming, online gaming.</p>
+                </div>
+            </div>
+            <div class="animation tcpudp-animation">
+                <div class="tcp-flow"><i class="fas fa-exchange-alt"></i> TCP: Reliable Data Flow</div>
+                <div class="udp-flow"><i class="fas fa-bolt"></i> UDP: Fast Data Burst</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="handshake">
+        <h2>TCP Three-Way Handshake</h2>
+        <div class="content-box animate-slide">
+            <p>The TCP Three-Way Handshake establishes a reliable connection between client and server.</p>
+            <div class="handshake-animation">
+                <div class="handshake-step" data-step="SYN">
+                    <span>1</span> SYN: Client → Server
+                    <p>Client sends SYN packet to initiate connection.</p>
+                </div>
+                <div class="handshake-step" data-step="SYN-ACK">
+                    <span>2</span> SYN-ACK: Server → Client
+                    <p>Server acknowledges with SYN-ACK packet.</p>
+                </div>
+                <div class="handshake-step" data-step="ACK">
+                    <span>3</span> ACK: Client → Server
+                    <p>Client sends ACK to confirm connection.</p>
+                </div>
+            </div>
+            <p id="handshakeDescription" class="animate-result">Hover or tap a step to see details.</p>
+        </div>
+    </section>
+
+    <section id="osi">
+        <h2>OSI Model</h2>
+        <div class="content-box animate-slide">
+            <p>The OSI model is a 7-layer framework for understanding network communication.</p>
+            <div class="osi-container">
+                <div class="osi-layer" data-layer="Application" data-info="Provides network services to applications. Protocols: HTTP, FTP, SMTP, DNS. Examples: Web browsers, email clients."><span>7</span> Application Layer</div>
+                <div class="osi-layer" data-layer="Presentation" data-info="Handles data encryption, compression, translation. Protocols: SSL, TLS, JPEG. Examples: Data formatting, encryption."><span>6</span> Presentation Layer</div>
+                <div class="osi-layer" data-layer="Session" data-info="Manages sessions between applications. Protocols: NetBIOS, RPC. Examples: Session establishment, maintenance."><span>5</span> Session Layer</div>
+                <div class="osi-layer" data-layer="Transport" data-info="Ensures reliable data transfer. Protocols: TCP, UDP. Examples: Error checking, flow control."><span>4</span> Transport Layer</div>
+                <div class="osi-layer" data-layer="Network" data-info="Handles routing and IP addressing. Protocols: IP, ICMP, RIP. Examples: Routers, IP packets."><span>3</span> Network Layer</div>
+                <div class="osi-layer" data-layer="Data Link" data-info="Manages physical addressing and error detection. Protocols: Ethernet, PPP. Examples: Switches, MAC addresses."><span>2</span> Data Link Layer</div>
+                <div class="osi-layer" data-layer="Physical" data-info="Transmits raw bits over physical medium. Examples: Cables, hubs, NICs. Standards: Ethernet, USB."><span>1</span> Physical Layer</div>
+            </div>
+            <p id="osiDescription" class="animate-result">Hover or tap a layer to see its purpose, protocols, and examples.</p>
+        </div>
+    </section>
+
+    <section id="tcpip">
+        <h2>TCP/IP Model</h2>
+        <div class="content-box animate-slide">
+            <p>The TCP/IP model is a 4-layer framework used in real-world networking.</p>
+            <div class="tcpip-container">
+                <div class="tcpip-layer" data-layer="Application" data-info="Combines OSI Application, Presentation, Session layers. Protocols: HTTP, FTP, DNS, SMTP."><span>4</span> Application Layer</div>
+                <div class="tcpip-layer" data-layer="Transport" data-info="Handles data transfer. Protocols: TCP, UDP. Examples: Reliable delivery, flow control."><span>3</span> Transport Layer</div>
+                <div class="tcpip-layer" data-layer="Internet" data-info="Manages IP addressing and routing. Protocols: IP, ICMP, ARP. Examples: IP packets, routing."><span>2</span> Internet Layer</div>
+                <div class="tcpip-layer" data-layer="Link" data-info="Handles physical and data link tasks. Protocols: Ethernet, Wi-Fi. Examples: MAC addresses, switches."><span>1</span> Link Layer</div>
+            </div>
+            <p id="tcpipDescription" class="animate-result">Hover or tap a layer to see its purpose and protocols.</p>
+        </div>
+    </section>
+
+    <section id="tools">
+        <h2>Network Tools</h2>
+        <div class="content-box animate-slide">
+            <p>Tools for network analysis, troubleshooting, and monitoring.</p>
+            <div class="info-grid">
+                <div class="info-card animate-card">
+                    <h3>Ping</h3>
+                    <p>Tests connectivity using ICMP packets.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Traceroute</h3>
+                    <p>Tracks packet paths to a destination.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Wireshark</h3>
+                    <p>Packet analyzer for network traffic inspection.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Nmap</h3>
+                    <p>Scans for devices, ports, and services.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Netstat</h3>
+                    <p>Displays active connections and stats.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>tcpdump</h3>
+                    <p>Command-line packet capture tool.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="security">
+        <h2>Network Security</h2>
+        <div class="content-box animate-slide">
+            <p>Protecting networks from threats ensures secure communication.</p>
+            <div class="info-grid">
+                <div class="info-card animate-card">
+                    <h3>Firewalls</h3>
+                    <p>Filters traffic based on rules to block unauthorized access.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>VPNs</h3>
+                    <p>Encrypts connections for secure remote access.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>IDS/IPS</h3>
+                    <p>Monitors and blocks network threats.</p>
+                </div>
+                <div class="info-card animate-card">
+                    <h3>Encryption</h3>
+                    <p>Secures data with protocols like SSL/TLS, IPsec.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Master Computer Networking | Built with <i class="fas fa-laptop-code"></i> & <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
